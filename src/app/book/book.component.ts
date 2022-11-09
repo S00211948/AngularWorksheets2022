@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../book';
+import { DummybookService } from '../dummybook.service';
 
 @Component({
   selector: 'app-book',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private BookService: DummybookService) {}
+  books: Book[] = [];
+  message: String = ''
 
-  ngOnInit(): void {
+
+  ngOnInit(): void 
+  {
+    this.BookService.getBooks().subscribe({
+      next: (value: Book[]) => this.books = value,
+      complete: () => console.log('book service finished'),
+      error: (message) => this.message = message}) 
   }
 
 }
