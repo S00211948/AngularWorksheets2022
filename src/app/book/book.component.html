@@ -8,6 +8,9 @@
     <tr>
         <th>Book Title</th>
         <th>Author</th>
+        <th>Year Written</th>
+        <th>Edition</th>
+        <th>Price</th>
     </tr>
     <tr *ngFor="let b of books">
         <td >
@@ -15,6 +18,15 @@
         </td>
         <td>
             {{b.author.name}}
+        </td>
+        <td>
+            {{b.year_written}}
+        </td>
+        <td>
+            {{b.edition}}
+        </td>
+        <td>
+            € {{b.price}}
         </td>
     </tr>
 </table>
